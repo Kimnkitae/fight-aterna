@@ -12,8 +12,20 @@ export const Prolog = () => {
             animation: {from: 0, to: 9, loop: true}
         }
     })
+    loadSprite("placeholder", "sprites/placeholderText/placeholder.png")
+
+    /* SOUNDS */
+    loadSound("player-walk-sound", "Sounds/player/walk.mp3")
+    loadSound("hospital-bgd-sound", "Sounds/hospital/nature.mp3")
+    /* FONTS */
+
+    loadFont("VMVSegaGenesis", "fonts/VMVSegaGenesis-Regular.otf")
     
     /* PLAYER */
+
+    const hospitalSound = play("hospital-bgd-sound")
+
+    hospitalSound.play()
     
     loadSprite("player", "sprites/main-character/player.png", {
         sliceX: 9,
@@ -63,9 +75,15 @@ export const Prolog = () => {
             body(),
             body({ isStatic: true}),
             "grandpa",
+            
         ])
 
         /* PLAYER */
+        const playerWalk = play("player-walk-sound", {
+            paused: true,
+            loop: true
+        })
+        
         let currentAnim = "idle"
         
         const mainCharacter = add([
@@ -93,27 +111,19 @@ export const Prolog = () => {
                     currentAnim = "walkD"
                 }
             }
-            
         }
-
-        onKeyDown((key) => {
-            WalkPlayer(key)
-        })
 
         onKeyRelease(["d", "в"], () => {
             mainCharacter.play("idle")
             currentAnim = "idle"
         })
-
+        
         onKeyRelease(["a", "ф"], () => {
             mainCharacter.play("idle")
             currentAnim = "idle"
         })
 
-
-
-
-        onCollide("player", "grandpa", () => {
+        const DialogWithGrandpa = onCollide("player", "grandpa", () => {
             const e = add([
                 sprite("button-e"),
                 pos(1600, 600),
@@ -122,6 +132,63 @@ export const Prolog = () => {
             onCollideEnd("player", "grandpa", () => {
                 destroy(e)
             })
+            
+            onKeyPress(["e", "у"], () => {
+
+                
+                destroy(e)
+                
+                const textWithPa = 
+                [
+                    "— Привет, дед. Я пришёл. Мама просила передать, что завтра принесёт бульон, но я... я просто хотел заглянуть пораньше.",
+                    "Привет, малый. Проходи, не стой в дверях, а то сквозняк ворует мои последние силы. Садись ближе.",
+                    "— Как ты сегодня? Врачи говорят, показатели в норме, но ты какой-то... слишком тихий.",
+                    "Врачи видят цифры, Сёва. А я вижу, как солнце садится. Красиво сегодня, правда? Золотое всё такое...",
+                    "— Да, на улице тепло. Скоро выпишут, пойдём в парк. Помнишь, как ты меня в детстве учил костры жечь без спичек?",
+                    "Помню. Ты тогда чуть брови себе не спалил. Слушай меня внимательно, внук. Ты ведь в последнее время... ничего странного не замечал? Воздух не вибрирует? Тени не кажутся гуще, чем должны быть?",
+                    "— Нет... Ну, иногда кажется, что краем глаза что-то вижу, но это просто усталость. Учёба, экзамены. А что?",
+                    "Хорошо. Значит, замок ещё держит. Но слушай... Когда меня не станет, мир для тебя может измениться. Стать громче, страшнее, непонятнее.",
+                    "— Деда, ну что ты такое говоришь? Ты поправишься! Не начинай эти свои загадки.",
+                    "Сёва, пообещай мне одну вещь. Если завеса упадет и ты увидишь то, что скрыто от других... не закрывай глаза. Не пытайся сбежать назад в темноту. Будь сильным. И помогай слабым — тем, кто не видит врага, который стоит у них за спиной.",
+                    "— Я не понимаю... О каких врагах ты?",
+                    "Скоро поймёшь. Просто помни: ты не проклят. Ты вооружён.",
+                    "— Дед?",
+                    "— ...",
+                ]
+
+                let TextIndex = 0
+
+                const placeholderText = add([
+                    sprite("placeholder"),
+                ])
+
+                const dialogText = add([
+                    text(textWithPa[0], 
+                        {
+                            width: 1920,
+                            size: 20,
+                            font: "VMVSegaGenesis",
+                        }
+                    ),
+                    pos(20, 1000),
+                ])
+                
+                const nextText = () => {
+                    TextIndex++
+                    if(TextIndex < textWithPa.length) {
+                        dialogText.text = textWithPa[TextIndex]
+
+                    } else {
+                        go("scene2")
+                    }
+                }
+                onKeyPress(["space", "enter"], nextText)
+                onClick(nextText)
+            })
+        })
+
+        onKeyDown((key) => {
+            WalkPlayer(key)
         })
     })
 }
