@@ -24,7 +24,7 @@ export const Prolog2 = () => {
     /* PLAYER */
 
     
-    loadSprite("player", "sprites/main-character/player.png", {
+    loadSprite("player1", "sprites/main-character/player.png", {
         sliceX: 9,
         sliceY: 1,
         anims: {
@@ -89,7 +89,7 @@ export const Prolog2 = () => {
         
         const mainCharacter = add([
             
-            sprite("player"),
+            sprite("player1"),
             pos(1380,618),
             area(),
             body(),

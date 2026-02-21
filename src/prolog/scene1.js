@@ -17,17 +17,24 @@ export const Prolog = () => {
     /* SOUNDS */
     loadSound("player-walk-sound", "Sounds/player/walk.mp3")
     loadSound("hospital-bgd-sound", "Sounds/hospital/nature.mp3")
+    loadSound("air-conditioner", "Sounds/hospital/air-conditioner.mp3")
     /* FONTS */
 
     loadFont("VMVSegaGenesis", "fonts/VMVSegaGenesis-Regular.otf")
     
     /* PLAYER */
 
-    const hospitalSound = play("hospital-bgd-sound")
+    const hospitalSound = play("hospital-bgd-sound", {
+        loop: true,
+        volume: 0.4,
+    })
+    const hospitalSound2 = play("air-conditioner", {
+        loop: true,
+        volume: 0.1,
+    })
 
-    hospitalSound.play()
     
-    loadSprite("player", "sprites/main-character/player.png", {
+    loadSprite("player1", "sprites/main-character/player.png", {
         sliceX: 9,
         sliceY: 1,
         anims: {
@@ -37,6 +44,9 @@ export const Prolog = () => {
             walkD: {from: 1, to: 8, loop: true, speed: 10},
         },
     })
+
+    hospitalSound.play()
+    hospitalSound2.play()
 
     scene("scene1", () => {
 
@@ -87,7 +97,7 @@ export const Prolog = () => {
         let currentAnim = "idle"
         
         const mainCharacter = add([
-            sprite("player"),
+            sprite("player1"),
             pos(600,618),
             area(),
             body(),
@@ -100,6 +110,7 @@ export const Prolog = () => {
                 mainCharacter.move(200, 0)
                 if(currentAnim !== "walkD") {
                     mainCharacter.play("walkD")
+
                     currentAnim = "walkD"
                 }
             }
@@ -179,6 +190,8 @@ export const Prolog = () => {
                         dialogText.text = textWithPa[TextIndex]
 
                     } else {
+                        hospitalSound.stop()
+                        hospitalSound2.stop()
                         go("scene2")
                     }
                 }
