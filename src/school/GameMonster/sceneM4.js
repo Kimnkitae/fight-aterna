@@ -22,7 +22,6 @@ export const SceneM4 = () => {
     loadSprite("player-right", "sprites/MonsterGame/player/right/right-walk.png")
     loadSprite("player-right", "sprites/MonsterGame/player/right/right-walk.png")
     loadSprite("text-form", "sprites/MonsterGame/scene1/text/text-form.png")
-    loadSprite("text-form", "sprites/MonsterGame/scene1/text/text-form.png")
     loadFont("VMVSegaGenesis", "fonts/VMVSegaGenesis-Regular.otf")
 
     scene("scenem4", () => {

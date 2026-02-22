@@ -1,11 +1,83 @@
 export const SceneM7 = () => {
 
     loadSprite("Phone", "sprites/school/schoolGame.png")
+    loadSprite("background5", "sprites/MonsterGame/scene4/background/background.png")
+    loadSprite("player-dead", "sprites/MonsterGame/scene6/player-dead.png")
+    loadSprite("grandpa", "sprites/MonsterGame/scene4/grandfather/grandfather-died.png")
+    loadFont("VMVSegaGenesis", "fonts/VMVSegaGenesis-Regular.otf")
+    loadSprite("text-form2", "sprites/MonsterGame/scene1/text/text-form.png")
 
     scene("scenem7", () => {
         const phone = add([
             sprite("Phone"),
         ])
+
+        const background = add([
+            sprite("background5", {
+                width: 720,
+                height: 400,
+            }),
+            pos(580, 240),
+        ]);
+
+        loadSprite("text-form", "/public/scene1/text/text-form.png");
+
+        const grandpa = add([
+            sprite("grandpa", {
+                width: 80,
+                height: 80,
+            }),
+            pos(950, 350),
+        ]);
+
+        const playerDead = add([
+            sprite("player-dead", {
+                width: 80,
+                height: 80,
+            }),
+            pos(600, 400),
+        ]);
+
+        const tForm = add([
+            sprite("text-form2", {
+                width: 700,
+                height: 300,
+            }),
+            pos(600, 320),
+        ])
+    
+        const texts = [
+            "...",
+            "to be continued...",
+        ];
+
+        let entTextIndex = 0;
+
+        const dialogText = add([
+            text(texts[0],
+                {
+                    width: 600,
+                    size: 12,
+                    font: "VMVSegaGenesis", 
+                }
+            ),
+            pos(650, 570),
+
+        ]);
+
+        const nextText = () => {
+
+            entTextIndex++;
+            if (entTextIndex < texts.length) {
+                dialogText.text = texts[entTextIndex];
+            } else {
+    
+                go("scene5");
+            }
+        }
+
+        onKeyPress(["space", "enter"], nextText);
+        onClick(nextText);
         
     })
 }

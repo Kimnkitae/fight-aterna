@@ -12,6 +12,7 @@ import { SceneM4 } from "/src/school/GameMonster/sceneM4.js"
 import { SceneM5 } from "/src/school/GameMonster/sceneM5.js"
 import { SceneM6 } from "/src/school/GameMonster/sceneM6.js"
 import { SceneM7 } from "/src/school/GameMonster/sceneM7.js"
+import { SceneMLose } from "/src/school/GameMonster/sceneMLose.js"
 
 kaplay({
     width: 1920,
@@ -32,4 +33,5 @@ SceneM4()
 SceneM5()
 SceneM6()
 SceneM7()
-go("scenem5")
+SceneMLose()
+go("scene1")

@@ -52,18 +52,27 @@ export const SceneM5 = () => {
         theme2.play();
 
         const background = add([
-            sprite("background5"),
-            pos(0, 0),
+            sprite("background5", {
+                width: 700,
+                height: 400,
+            }),
+            pos(600, 240),
         ])
 
         const fightingScene = add([
-            sprite("fighting"),
-            pos(400, 400),
+            sprite("fighting", {
+                width: 80,
+                height: 80,
+            }),
+            pos(800, 400),
         ])
 
         const grandpa = add([
-            sprite("grandpa"),
-            pos(500, 200),
+            sprite("grandpa", {
+                width: 80,
+                height: 80,
+            }),
+            pos(950, 350),
         ]);
 
         fightingScene.play("start");
@@ -73,8 +82,6 @@ export const SceneM5 = () => {
             'p', 'x', 'q', 'm', 'a', 'l', 'c', 'o', 'b', 'z', 
             'k', 'v', 'w', 'n', 's', 'u', 'g', 'y', 'd', 'r', 
             'j', 'e', 'i', 't', 'f', 'h', 'p', 'z', 'm', 'q', 
-            'l', 'x', 'o', 'c', 'v', 'a', 'n', 'w', 's', 'k', 
-            'u', 'b', 'y', 'g', 'r', 'd', 't', 'j', 'e', 'i',
         ];
 
         let currentIndex = 0;
@@ -96,13 +103,16 @@ export const SceneM5 = () => {
             let currentButtonSprite = "btn-" + waitingAnswers[currentIndex];
 
             currentButton = add([
-                sprite(currentButtonSprite),
-                pos(rand(400, 800), rand(400, 500)),
+                sprite(currentButtonSprite, {
+                    width: 100,
+                    height: 100,
+                }),
+                pos(rand(600, 1000), rand(400, 500)),
             ]);
 
-            Timer = wait(2, () => {
+            Timer = wait(3, () => {
                 destroy(currentButton);
-                go("sceneLose");
+                go("scenemlose");
                 theme2.stop();
             });
 
@@ -111,26 +121,19 @@ export const SceneM5 = () => {
         const CheckButton = (key) => {
             if(key == waitingAnswers[currentIndex]) {
                 Timer.cancel();
-                loadBean(),
                 shake(5),
                 currentIndex++;
                 destroy(currentButton);
                 CreateButton();
-                console.log("next button");
             }
 
             else {
-                go("sceneLose");
+                go("scenemlose");
                 theme2.stop(); 
             };
         };
 
         CreateButton();
-        
-        
-        /* onKeyPress("enter", "space")
-           onKeyPress((key) => {
-            }) */
         onKeyPress((key) => {
             CheckButton(key);
         });
