@@ -1,3 +1,4 @@
+import { WalkPlayer } from "../utils/walkplayer.js"
 export const Prolog = () => {
 
     loadSprite("bgd-hospital", "sprites/prolog/background/hospital.png")
@@ -93,9 +94,7 @@ export const Prolog = () => {
             paused: true,
             loop: true
         })
-        
-        let currentAnim = "idle"
-        
+    
         const mainCharacter = add([
             sprite("player1"),
             pos(600,618),
@@ -103,36 +102,9 @@ export const Prolog = () => {
             body(),
             "player"
         ])
-
-        const WalkPlayer = (key) => {
-            if(key == "d" || key == "в") {
-                mainCharacter.flipX = false
-                mainCharacter.move(200, 0)
-                if(currentAnim !== "walkD") {
-                    mainCharacter.play("walkD")
-
-                    currentAnim = "walkD"
-                }
-            }
-            if(key == "a" || key == "ф") {
-                mainCharacter.flipX = true
-                mainCharacter.move(-300, 0)
-                if(currentAnim !== "walkD") {
-                    mainCharacter.play("walkD")
-                    currentAnim = "walkD"
-                }
-            }
-        }
-
-        onKeyRelease(["d", "в"], () => {
-            mainCharacter.play("idle")
-            currentAnim = "idle"
-        })
         
-        onKeyRelease(["a", "ф"], () => {
-            mainCharacter.play("idle")
-            currentAnim = "idle"
-        })
+        
+        
 
         const DialogWithGrandpa = onCollide("player", "grandpa", () => {
             const e = add([
@@ -145,10 +117,7 @@ export const Prolog = () => {
             })
             
             onKeyPress(["e", "у"], () => {
-
-                
                 destroy(e)
-                
                 const textWithPa = 
                 [
                     "— Привет, дед. Я пришёл. Мама просила передать, что завтра принесёт бульон, но я... я просто хотел заглянуть пораньше.",
@@ -188,20 +157,20 @@ export const Prolog = () => {
                     TextIndex++
                     if(TextIndex < textWithPa.length) {
                         dialogText.text = textWithPa[TextIndex]
-
                     } else {
                         hospitalSound.stop()
                         hospitalSound2.stop()
                         go("scene2")
                     }
                 }
+                
                 onKeyPress(["space", "enter"], nextText)
                 onClick(nextText)
             })
         })
 
         onKeyDown((key) => {
-            WalkPlayer(key)
+            WalkPlayer(mainCharacter, key)
         })
     })
 }

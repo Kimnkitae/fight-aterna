@@ -75,19 +75,19 @@ export const SceneM3 = () => {
             "player",
         ])
         
-        onKeyPress("s", () => {
+        onKeyPress(["s", "ы"], () => {
             player.move(0, 2000)
             player.play("walkS")
         });
-        onKeyPress("w", () => {
+        onKeyPress(["w", "ц"], () => {
             player.move(0, -2000);
             player.play("walkW");
         });
-        onKeyPress("a", () => {
+        onKeyPress(["a", "ф"], () => {
             player.move(-2000, 0);
             player.play("walkA");
         });
-        onKeyPress("d", () => {
+        onKeyPress(["d", "в"], () => {
             player.move(2000, 0);
             player.play("walkD");
         });
