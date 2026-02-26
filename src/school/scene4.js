@@ -5,6 +5,7 @@ export const SchoolGame = () => {
     loadFont("VMVSegaGenesis", "fonts/VMVSegaGenesis-Regular.otf")
     
     scene("scene4", () => {
+        
         const phone = add([
             sprite("Phone"),
         ])

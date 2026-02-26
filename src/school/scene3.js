@@ -50,6 +50,7 @@ export const School = () => {
                     dialogText.text = textGame[TextIndex]
 
                 } else {
+                    hospitalSound.stop()
                     go("scene4")
                 }
             }

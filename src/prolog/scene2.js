@@ -19,7 +19,7 @@ export const Prolog2 = () => {
 
     /* SOUNDS */
     loadSound("player-walk-sound", "Sounds/player/walk.mp3")
-    loadSound("hospital-bgd-sound", "Sounds/hospital/nature.mp3")
+
     
     /* PLAYER */
 

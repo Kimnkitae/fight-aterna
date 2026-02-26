@@ -53,4 +53,4 @@ SceneMLose()
 /* Home */
 House()
 
-go("scene1")
+go("scene5")

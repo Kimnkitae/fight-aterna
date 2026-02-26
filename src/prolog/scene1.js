@@ -102,6 +102,38 @@ export const Prolog = () => {
             body(),
             "player"
         ])
+
+        let currentAnim = "idle"
+
+        const WalkPlayer = (key) => {
+            if(key == "d" || key == "в") {
+                mainCharacter.flipX = false
+                mainCharacter.move(200, 0)
+                if(currentAnim !== "walkD") {
+                    mainCharacter.play("walkD")
+
+                    currentAnim = "walkD"
+                }
+            }
+            if(key == "a" || key == "ф") {
+                mainCharacter.flipX = true
+                mainCharacter.move(-300, 0)
+                if(currentAnim !== "walkD") {
+                    mainCharacter.play("walkD")
+                    currentAnim = "walkD"
+                }
+            }
+        }
+
+        onKeyRelease(["d", "в"], () => {
+            mainCharacter.play("idle")
+            currentAnim = "idle"
+        })
+        
+        onKeyRelease(["a", "ф"], () => {
+            mainCharacter.play("idle")
+            currentAnim = "idle"
+        })
         
         
         
@@ -170,7 +202,7 @@ export const Prolog = () => {
         })
 
         onKeyDown((key) => {
-            WalkPlayer(mainCharacter, key)
+            WalkPlayer(key)
         })
     })
 }

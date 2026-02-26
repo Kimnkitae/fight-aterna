@@ -1,19 +1,13 @@
 export const SchoolAttack = () => {
 
     loadSprite("school2", "sprites/school/school-night.png")
-    loadSound("hospital-bgd-sound", "Sounds/hospital/nature.mp3")
 
     scene("scene5", () => {
         const school = add([
             sprite("school2"),
         ])
 
-        const hospitalSound = play("hospital-bgd-sound", {
-            loop: true,
-            volume: 0.4,
-        })
         
-        hospitalSound.play()
 
         const textGame = 
             [
@@ -44,13 +38,8 @@ export const SchoolAttack = () => {
                 if(TextIndex < textGame.length) {
                     dialogText.text = textGame[TextIndex]
 
-                } 
-                else if(TextIndex >= 2) {
-                    hospitalSound.stop()
-                }
-
-                else {
-                    go("scene4")
+                } else {
+                    go("scene6")
                 }
             }
             onKeyPress(["space", "enter"], nextText)
