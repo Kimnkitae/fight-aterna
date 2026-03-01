@@ -1,4 +1,9 @@
 import kaplay from "kaplay"
+
+/* Menu */
+import { Menu } from "/src/menu/menu.js"
+import { MenuStartWarning } from "/src/menu/MenuStartWarning.js"
+import { Settings } from "/src/menu/menu-settings.js"
 /* Hospital */
 import { Prolog } from "/src/prolog/scene1.js"
 import { Prolog2 } from "/src/prolog/scene2.js"
@@ -19,17 +24,21 @@ import { SceneM5 } from "/src/school/GameMonster/sceneM5.js"
 import { SceneM6 } from "/src/school/GameMonster/sceneM6.js"
 import { SceneM7 } from "/src/school/GameMonster/sceneM7.js"
 import { SceneMLose } from "/src/school/GameMonster/sceneMLose.js"
-
-
 /* HOUSE */
-
 import { House } from "/src/house/scene10.js"
+/* END */
+import { End } from "/src/end.js"
+
 kaplay({
     width: 1920,
     height: 1080,
     canvas: document.querySelector("#canvas"),
 })
 
+/* Menu */
+Menu()
+MenuStartWarning()
+Settings()
 /* Hospital */
 Prolog()
 Prolog2()
@@ -52,5 +61,7 @@ SceneM7()
 SceneMLose()
 /* Home */
 House()
+/* END */
+End()
 
-go("scene5")
+go("scene1")
