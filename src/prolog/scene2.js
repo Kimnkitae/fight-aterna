@@ -1,3 +1,4 @@
+import { WalkPlayer } from "../utils/walkplayer.js"
 export const Prolog2 = () => {
 
     loadSprite("bgd-hospital2", "sprites/prolog/background/hospital2.png")
@@ -88,47 +89,15 @@ export const Prolog2 = () => {
         let currentAnim = "idle"
         
         const mainCharacter = add([
-            
             sprite("player1"),
             pos(1380,618),
             area(),
             body(),
             "player"
         ])
-
-        
-        
-        const WalkPlayer = (key) => {
-            if(key == "d" || key == "в") {
-                mainCharacter.flipX = false
-                mainCharacter.move(200, 0)
-                if(currentAnim !== "walkD") {
-                    mainCharacter.play("walkD")
-                    currentAnim = "walkD"
-                }
-            }
-            if(key == "a" || key == "ф") {
-                mainCharacter.flipX = true
-                mainCharacter.move(-200, 0)
-                if(currentAnim !== "walkD") {
-                    mainCharacter.play("walkD")
-                    currentAnim = "walkD"
-                }
-            }
-        }
-
-        onKeyRelease(["d", "в"], () => {
-            mainCharacter.play("idle")
-            currentAnim = "idle"
-        })
-        
-        onKeyRelease(["a", "ф"], () => {
-            mainCharacter.play("idle")
-            currentAnim = "idle"
-        })
         
         onKeyDown((key) => {
-            WalkPlayer(key)
+            WalkPlayer(mainCharacter,key, currentAnim)
         })
 
         const labelText = mainCharacter.add([
