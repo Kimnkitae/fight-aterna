@@ -19,13 +19,7 @@ export const SchoolAttack4 = () => {
             sprite("school-classroom"),
         ])
 
-        const schoolFloor = add([
-            sprite("school-fight-floor"),
-            area(),
-            body({ isStatic: true }),
-            pos(100,220)
-
-        ])
+        
 
         const mainCharacter = add([
             sprite("player-vs-schCurse"),
