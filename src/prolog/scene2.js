@@ -1,44 +1,7 @@
 import { WalkPlayer } from "../utils/walkplayer.js"
 export const Prolog2 = () => {
-
-    loadSprite("bgd-hospital2", "sprites/prolog/background/hospital2.png")
-    loadSprite("floor-hospital", "sprites/prolog/background/hospital-floor.png")
-    loadSprite("left-wall-hospital", "sprites/prolog/background/hospital-left-wall.png")
-    loadSprite("right-wall-hospital", "sprites/prolog/background/hospital-right-wall.png")
-    loadSprite("hospital-call", "sprites/prolog/background/hospital-call.png")
-    loadFont("VMVSegaGenesis", "fonts/VMVSegaGenesis-Regular.otf")
-    loadSprite("placeholder2", "sprites/placeholderText/placeholder2.png")
-    loadSound("hospital-bgd-sound", "Sounds/hospital/nature.mp3")
-    loadSprite("hospital-grandfather", "sprites/prolog/background/hospital-grandfather.png")
-    loadSprite("button-e", "sprites/prolog/BUTTON/e/button-e.png", {
-        sliceX: 10,
-        sliceY: 1,
-        anims: {
-            animation: {from: 0, to: 9, loop: true}
-        }
-    })
-
-    /* SOUNDS */
-    loadSound("player-walk-sound", "Sounds/player/walk.mp3")
-
-    
-    /* PLAYER */
-
-    
-    loadSprite("player1", "sprites/main-character/player.png", {
-        sliceX: 9,
-        sliceY: 1,
-        anims: {
-            
-            idle: {from: 0, to: 0},
-            
-            walkD: {from: 1, to: 8, loop: true, speed: 10},
-        },
-    })
-    
     scene("scene2", () => {
 
-        
         const hospital = add([
             sprite("bgd-hospital2"),
         ])
@@ -86,7 +49,9 @@ export const Prolog2 = () => {
             loop: true
         })
         
-        let currentAnim = "idle"
+       let currentAnim = {
+            anim: "idle"
+        }
         
         const mainCharacter = add([
             sprite("player1"),

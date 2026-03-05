@@ -1,9 +1,4 @@
 export const SceneMLose = () => {
-
-    loadSprite("Phone", "sprites/school/schoolGame.png")
-     loadSprite("game-over", "sprites/MonsterGame/vsRazor/gameover.png")
-     loadFont("VMVSegaGenesis", "fonts/VMVSegaGenesis-Regular.otf")
-
     scene("scenemlose", () => {
         const phone = add([
             sprite("Phone"),
@@ -15,7 +10,7 @@ export const SceneMLose = () => {
                 height: 400,
             }),
             pos(600, 240),
-        ]);
+        ])
 
         const R = add([
             text("Нажмите R чтобы начать снова", {

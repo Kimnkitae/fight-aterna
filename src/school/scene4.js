@@ -1,11 +1,5 @@
 export const SchoolGame = () => {
-
-    loadSprite("Phone", "sprites/school/schoolGame.png")
-    loadSprite("menu", "sprites/MonsterGame/scene0/Menu.png")
-    loadFont("VMVSegaGenesis", "fonts/VMVSegaGenesis-Regular.otf")
-    
     scene("scene4", () => {
-        
         const phone = add([
             sprite("Phone"),
         ])

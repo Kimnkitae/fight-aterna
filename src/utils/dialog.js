@@ -34,6 +34,7 @@ export const Dialog = (object1, object2, dialogText, nextScene) => {
                 const nextText = () => {
                     TextIndex++
                     if(TextIndex < dialogText.length) {
+
                         dialogText.text = dialogText[TextIndex]
                     } else {
                         go(nextScene)

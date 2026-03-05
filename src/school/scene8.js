@@ -1,42 +1,82 @@
+import { WalkPlayer } from "../utils/walkplayer.js"
 export const SchoolAttack4 = () => {
-
-    loadSprite("school-classroom", "sprites/school/school-fight.png")
-    loadSprite("school-fight-floor", "sprites/school/school-fight-floor.png")
-    loadSprite("player-vs-schCurse", "sprites/main-character/player.png", {
-        sliceX: 9,
-        sliceY: 1,
-        anims: {
-
-            idle: {from: 0, to: 0},
-
-            walkD: {from: 1, to: 8, loop: true, speed: 10},
-        },
-    })
-    
-
     scene("scene8", () => {
         const school = add([
             sprite("school-classroom"),
+            "school"
         ])
 
-        
+        const schoolFloor = add([
+            sprite("school-fight-floor"),
+            pos(0, 900),
+            area(),
+            body(),
+        ])
 
         const mainCharacter = add([
-            sprite("player-vs-schCurse"),
+            sprite("player1"),
             pos(600,618),
             area(),
             body(),
             "player"
         ])
 
-        let currentAnim = "idle"
+        const labelText = mainCharacter.add([
+            sprite("placeholder2", {
+                width: 400,
+                height: 50,
+            }),
+            pos(-100, -30),
+            area(),
+            body(),
+        ])
+
+         const label = mainCharacter.add([
+            text("(Надо бежать к пожарному выходу!!!)",
+                 {
+                    width: 500,
+                    size: 16,
+                    font: "VMVSegaGenesis"
+                 }),
+            pos(-100, -40),
+        ])
+    
+    
+        wait(2, () => {
+            destroy(label)
+            destroy(labelText)
+        })
+
+       let currentAnim = {
+            anim: "idle"
+        }
 
         onKeyDown((key) => {
             WalkPlayer(mainCharacter, key, currentAnim)
         })
 
-        onUpdate(() => {
-            camPos(mainCharacter.pos)
+        const CollideLeftWall = add([
+            sprite("blockSchClss", {
+                width: 10,
+                height: 1080
+            }),
+            pos(0, 0),
+            area(),
+            body({ isStatic: true })
+        ])
+        const CollideRightWall = add([
+            sprite("blockSchClss", {
+                width: 10,
+                height: 1080
+            }),
+            pos(1920, 0),
+            area(),
+            body({ isStatic: true }),
+            "RightWall"
+        ])
+
+        mainCharacter.onCollide("RightWall", () => {
+            go("scene9")
         })
     })
 }

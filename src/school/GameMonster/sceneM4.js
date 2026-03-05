@@ -1,29 +1,4 @@
 export const SceneM4 = () => {
-
-    loadSprite("Phone", "sprites/school/schoolGame.png")
-    loadSprite("player", "sprites/MonsterGame/player/playerSprite.png", {
-        sliceX: 7,
-        sliceY: 4,
-        anims: {
-            walkS: {from: 0, to: 5, loop: true },
-            walkW: {from: 7, to: 13, loop: true },
-            walkD: {from: 14, to: 19, loop: true },
-            walkA: {from: 21, to: 26, loop: true },
-        },
-    })
-
-    loadSprite("grandpa", "sprites/MonsterGame/scene4/grandfather/grandfather-died.png")
-    loadSprite("grandpa", "sprites/MonsterGame/scene4/grandfather/grandfather-died.png")
-    
-    loadSprite("background3", "scene4/background/background.png")
-    loadSprite("background3", "sprites/MonsterGame/scene4/background/background.png")
-    loadSprite("razorA", "sprites/MonsterGame/Razor/razorA.png")
-    loadSprite("razorA", "sprites/MonsterGame/Razor/razorA.png")
-    loadSprite("player-right", "sprites/MonsterGame/player/right/right-walk.png")
-    loadSprite("player-right", "sprites/MonsterGame/player/right/right-walk.png")
-    loadSprite("text-form", "sprites/MonsterGame/scene1/text/text-form.png")
-    loadFont("VMVSegaGenesis", "fonts/VMVSegaGenesis-Regular.otf")
-
     scene("scenem4", () => {
         const phone = add([
             sprite("Phone"),
@@ -72,14 +47,13 @@ export const SceneM4 = () => {
             pos(600, 320),
         ])
 
-
          const texts = [
-            "Garou: Who are you?",
-            "?: Don't care..",
-            "Garou: Why did you killed that old man?",
-            "?: Because I can",
-            "Garou: As a future great swordsman, you will become my first obstacle, attack!",
-            "?: I...kill..you",
+            "Гароу: Кто ты?",
+            "?: Неважно...",
+            "Гароу: Почему ты убил этого старика?",
+            "?: Потому что я могу",
+            "Гароу: Как будущий великий мечник, ты станешь моим первым препятствием, атакуй!",
+            "?: Я...убью..тебя",
         ]
 
         let entTextIndex = 0;
@@ -108,6 +82,5 @@ export const SceneM4 = () => {
 
         onKeyPress(["space", "enter"], nextText)
         onClick(nextText)
-        
     })
 }

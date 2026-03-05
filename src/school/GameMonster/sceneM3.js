@@ -1,24 +1,4 @@
 export const SceneM3 = () => {
-
-    loadSprite("blockTop", "sprites/MonsterGame/scene3/blockTop.png")
-    loadSprite("blockRight", "sprites/MonsterGame/scene3/blockRight.png")
-    loadSprite("blockBottom", "sprites/MonsterGame/scene3/blockBottom.png")
-    loadSprite("blockLeft", "sprites/MonsterGame/scene3/blockLeft.png")
-
-    loadSprite("Phone", "sprites/school/schoolGame.png")
-    loadSprite("player", "sprites/MonsterGame/player/playerSprite.png", {
-        sliceX: 7,
-        sliceY: 4,
-        anims: {
-            walkS: {from: 0, to: 5, loop: true },
-            walkW: {from: 7, to: 13, loop: true },
-            walkD: {from: 14, to: 19, loop: true },
-            walkA: {from: 21, to: 26, loop: true },
-        },
-    })
-    loadSprite("Collide", "sprites/MonsterGame/scene3/Collide.png")
-    loadSprite("background3", "sprites/MonsterGame/scene4/background/background.png")
-
     scene("scenem3", () => {
         const phone = add([
             sprite("Phone"),
@@ -35,7 +15,6 @@ export const SceneM3 = () => {
             "Collide",
         ]) 
 
-        
         const blockTop = add([
             sprite("blockTop"),
             pos(580, 360),
@@ -56,6 +35,7 @@ export const SceneM3 = () => {
             area(),
             body({ isStatic: true}),
         ])
+
         const background = add([
             sprite("background3", {
                 width: 750,
@@ -78,23 +58,22 @@ export const SceneM3 = () => {
         onKeyPress(["s", "ы"], () => {
             player.move(0, 2000)
             player.play("walkS")
-        });
+        })
         onKeyPress(["w", "ц"], () => {
             player.move(0, -2000);
             player.play("walkW");
-        });
+        })
         onKeyPress(["a", "ф"], () => {
             player.move(-2000, 0);
             player.play("walkA");
-        });
+        })
         onKeyPress(["d", "в"], () => {
             player.move(2000, 0);
             player.play("walkD");
-        });
+        })
 
         player.onCollide("Collide", () => {
-            go("scenem4");
-            
+            go("scenem4");  
         })
     })
 }

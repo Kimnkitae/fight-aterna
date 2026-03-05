@@ -1,16 +1,10 @@
 export const SceneM6 = () => {
-
-    loadSprite("Phone", "sprites/school/schoolGame.png")
-    loadFont("VMVSegaGenesis", "fonts/VMVSegaGenesis-Regular.otf")
-
     scene("scenem6", () => {
         const phone = add([
             sprite("Phone"),
         ])
-        
-        
         const texts = [
-            "Am I lose?",
+            "Я проиграл?",
         ]
 
         let entTextIndex = 0;
@@ -24,11 +18,9 @@ export const SceneM6 = () => {
                 }
             ),
             pos(580, 560),
-
         ])
 
         const nextText = () => {
-
             entTextIndex++
             if (entTextIndex < texts.length) {
                 dialogText.text = texts[entTextIndex]

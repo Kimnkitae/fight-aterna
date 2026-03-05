@@ -1,13 +1,5 @@
 export const School = () => {
-
-    loadSprite("placeholder", "sprites/placeholderText/placeholder.png")
-    loadFont("VMVSegaGenesis", "fonts/VMVSegaGenesis-Regular.otf")
-    loadSprite("school", "sprites/school/school.png")
-    loadSound("hospital-bgd-sound", "Sounds/hospital/nature.mp3")
-
-
     scene("scene3", () => {
-
         const hospitalSound = play("hospital-bgd-sound", {
             loop: true,
             volume: 0.4,

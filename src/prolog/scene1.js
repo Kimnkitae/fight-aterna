@@ -1,60 +1,23 @@
 import { Dialog } from "../utils/dialog.js"
 import { WalkPlayer } from "../utils/walkplayer.js"
 export const Prolog = () => {
-
-    loadSprite("bgd-hospital", "sprites/prolog/background/hospital.png")
-    loadSprite("floor-hospital", "sprites/prolog/background/hospital-floor.png")
-    loadSprite("left-wall-hospital", "sprites/prolog/background/hospital-left-wall.png")
-    loadSprite("right-wall-hospital", "sprites/prolog/background/hospital-right-wall.png")
-    loadSprite("hospital-grandfather", "sprites/prolog/background/hospital-grandfather.png")
-    loadSprite("button-e", "sprites/prolog/BUTTON/e/button-e.png", {
-        sliceX: 10,
-        sliceY: 1,
-        anims: {
-            animation: {from: 0, to: 9, loop: true}
-        }
-    })
-    loadSprite("placeholder", "sprites/placeholderText/placeholder.png")
-
-    /* SOUNDS */
-    loadSound("player-walk-sound", "Sounds/player/walk.mp3")
-    loadSound("hospital-bgd-sound", "Sounds/hospital/nature.mp3")
-    loadSound("air-conditioner", "Sounds/hospital/air-conditioner.mp3")
-    /* FONTS */
-
-    loadFont("VMVSegaGenesis", "fonts/VMVSegaGenesis-Regular.otf")
-    
-    /* PLAYER */
-
-    const hospitalSound = play("hospital-bgd-sound", {
-        loop: true,
-        volume: 0.4,
-    })
-    const hospitalSound2 = play("air-conditioner", {
-        loop: true,
-        volume: 0.1,
-    })
-
-    
-    loadSprite("player1", "sprites/main-character/player.png", {
-        sliceX: 9,
-        sliceY: 1,
-        anims: {
-
-            idle: {from: 0, to: 0},
-
-            walkD: {from: 1, to: 8, loop: true, speed: 10},
-        },
-    })
-
-    hospitalSound.play()
-    hospitalSound2.play()
-
     scene("scene1", () => {
 
         const hospital = add([
             sprite("bgd-hospital"),
         ])
+        
+        const hospitalSound = play("hospital-bgd-sound", {
+            loop: true,
+            volume: 0.4,
+        })
+        
+        const hospitalSound2 = play("air-conditioner", {
+            loop: true,
+            volume: 0.1,
+        })
+        hospitalSound.play()
+        hospitalSound2.play()
 
         const hospitalFloor = add([
             sprite("floor-hospital"),
@@ -87,13 +50,9 @@ export const Prolog = () => {
             body(),
             body({ isStatic: true}),
             "grandpa",
-            
         ])
         
         /* PLAYER */
-
-        let currentAnim = "idle"
-        let TextIndex = 0
 
         const mainCharacter = add([
             sprite("player1"),
@@ -102,15 +61,48 @@ export const Prolog = () => {
             body(),
             "player"
         ])
+        
+        /* How to move */
 
-        onUpdate(() => {
-            Dialog("player", "grandpa", textWithPa, "scene2")
-        })
+        const textHowToMove = add([
+            color(0,0,0),
+            text("Управление", {
+                font: "VMVSegaGenesis",
+            }),
+            pos(200, 100)
+        ])
+        
+        const buttonsHowToMove = add([
+            sprite("howToMove"),
+            pos(220, 150)
+        ])
+
+        buttonsHowToMove.play("animation")
+        
+        const textHowToClick = add([
+            color(0,0,0),
+            text("Взаимодействие", {
+                font: "VMVSegaGenesis",
+            }),
+            pos(800, 100)
+        ])
+        
+        const buttonsHowToClick = add([
+            sprite("howToClick"),
+            pos(1000, 150)
+        ])
+        buttonsHowToClick.play("animation")
+        
+        let currentAnim = {
+            anim: "idle"
+        }
+
         onKeyDown((key) => {
             WalkPlayer(mainCharacter, key, currentAnim)
         })
-
-        const textWithPa = [
+        
+        let entTextIndex = 0
+        const texts = [
             "— Привет, дед. Я пришёл. Мама просила передать, что завтра принесёт бульон, но я... я просто хотел заглянуть пораньше.",
             "Привет, малый. Проходи, не стой в дверях, а то сквозняк ворует мои последние силы. Садись ближе.",
             "— Как ты сегодня? Врачи говорят, показатели в норме, но ты какой-то... слишком тихий.",
@@ -127,8 +119,51 @@ export const Prolog = () => {
             "— ...",
         ]
 
-        
-        
+    onCollide("player", "grandpa", () => {
+            const e = add([
+                sprite("button-e"),
+                pos(1600, 600),
+            ])
+            e.play("animation")
+            onCollideEnd("player", "grandpa", () => {
+                destroy(e)
+            })
+            
+            onKeyPress(["e", "у"], () => {
+                destroy(e)
 
+                
+
+                const placeholderText = add([
+                    sprite("placeholder"),
+                ])
+
+                const ObjectDialogText = add([
+                    text(texts[0], 
+                        {
+                            width: 1920,
+                            size: 20,
+                            font: "VMVSegaGenesis",
+                        }
+                    ),
+                    pos(20, 1000),
+                ])
+                
+                const nextText = () => {
+                    ++entTextIndex
+                    if(entTextIndex < texts.length) {
+
+                        ObjectDialogText.text = texts[entTextIndex]
+                    } else {
+                        go("scene2")
+                    }
+                }
+                
+                onKeyPress(["space", "enter"], () => {
+                    nextText()
+                })
+                onClick(nextText)
+            })
+        })
     })
 }

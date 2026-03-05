@@ -1,19 +1,12 @@
 export const SchoolAttack3 = () => {
-
-    loadSprite("school-fight", "sprites/school/school-night.png")
-    
-    
-
     scene("scene7", () => {
         const school = add([
             sprite("school-fight"),
         ])
-        
 
         const textGame = 
             [
                 "— Что мне делать?",
-                
             ]
 
             let TextIndex = 0
@@ -42,6 +35,7 @@ export const SchoolAttack3 = () => {
                     go("scene8")
                 }
             }
+            
             onKeyPress(["space", "enter"], nextText)
             onClick(nextText)
     })

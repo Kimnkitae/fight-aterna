@@ -1,13 +1,23 @@
+import { ClickSound } from "../utils/soundclick"
 export const Menu = () => {
-
-    loadSprite("menu-background", "sprites/menu/menu.png")
-    loadFont("VMVSegaGenesis", "fonts/VMVSegaGenesis-Regular.otf")
-    loadFont("StepovikSPBasic-Bold", "fonts/StepovikSPBasic-Bold.otf")
-
     scene("sceneMenu", () => {
         const background = add([
             sprite("menu-background"),
         ])
+
+        const bgdSound = play("soundbgdMenu", {
+            loop: true,
+            volume: 0.1,
+        })
+
+        bgdSound.stop()
+
+        bgdSound.play()
+
+        const menuClick = play("menuClick", {
+            volume: 0.3,
+        })
+        menuClick.stop()
 
         const name = add([
             color(255,0,0),
@@ -27,7 +37,6 @@ export const Menu = () => {
                     font: "VMVSegaGenesis",
                 }
             ),
-           
             "buttonStartTag",
             area(),
         ])
@@ -39,10 +48,8 @@ export const Menu = () => {
                 {
                     size: 40,
                     font: "VMVSegaGenesis",
-                    
                 }
             ),
-            
             "buttonSettings",
             area(),
         ])
@@ -61,14 +68,20 @@ export const Menu = () => {
         ])
 
         onClick("buttonStartTag", () => {
+            ClickSound("buttonStartTag", menuClick)
+            bgdSound.stop()
             go("sceneMenuStartWarning")
         })
 
         onClick("buttonSettings", () => {
+            ClickSound("buttonSettings", menuClick)
+            bgdSound.stop()
             go("sceneSettings")
         })
 
         onClick("buttonExit", () => {
+            ClickSound("buttonSettings", menuClick)
+            bgdSound.stop()
             window.location.href = "/"
         })
     })

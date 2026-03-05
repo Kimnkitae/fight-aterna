@@ -1,14 +1,8 @@
 export const SchoolAttack = () => {
-
-    loadSprite("school2", "sprites/school/school-night.png")
-
     scene("scene5", () => {
         const school = add([
             sprite("school2"),
         ])
-
-        
-
         const textGame = 
             [
                 "— Фух, наконец прошел, интересная игрушка",
@@ -32,7 +26,7 @@ export const SchoolAttack = () => {
                 ),
                 pos(20, 1000),
             ])
-                
+               
             const nextText = () => {
                 TextIndex++
                 if(TextIndex < textGame.length) {

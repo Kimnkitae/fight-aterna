@@ -1,5 +1,9 @@
 import kaplay from "kaplay"
 
+/* Assets */
+
+import { loadAssets } from "./assets"
+
 /* Menu */
 import { Menu } from "/src/menu/menu.js"
 import { MenuStartWarning } from "/src/menu/MenuStartWarning.js"
@@ -34,6 +38,8 @@ kaplay({
     height: 1080,
     canvas: document.querySelector("#canvas"),
 })
+
+loadAssets()
 
 /* Menu */
 Menu()

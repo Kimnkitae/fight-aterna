@@ -1,8 +1,10 @@
+import { ClickSound } from "../utils/soundclick"
 export const Settings = () => {
-
-    loadSprite("settings-bgd", "sprites/menu/menu-settings-bgd.png")
-
     scene("sceneSettings", () => {
+        const menuClick = play("menuClick", {
+            volume: 0.3,
+        })
+        menuClick.stop()
         
         const settingsBgd = add([
             sprite("settings-bgd"),
@@ -29,6 +31,7 @@ export const Settings = () => {
         ])
 
         onClick("buttonBack", () => {
+            ClickSound("buttonBack", menuClick)
             go("sceneMenu")
         })
     })

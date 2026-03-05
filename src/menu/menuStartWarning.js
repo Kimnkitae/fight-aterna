@@ -1,10 +1,5 @@
 export const MenuStartWarning = () => {
-
-    loadSprite("warning", "sprites/menu/menu-start-warning.png")
-    loadFont("VMVSegaGenesis", "fonts/VMVSegaGenesis-Regular.otf")
-
     scene("sceneMenuStartWarning", () => {
-
         const warning = add([
             sprite("warning"),
             
@@ -29,8 +24,16 @@ export const MenuStartWarning = () => {
             color(255, 0, 0)
         ])
 
-        
-        wait(7, () => {
+         const warningText3 = add([
+            pos(100, 600),
+            text("А также F5 или перезагрузка ведёт к главному меню", {
+                size: 34,
+                font:"VMVSegaGenesis",
+            }),
+            color(255, 0, 0)
+        ])
+
+        wait(10, () => {
             go("scene1")
         })
     })
