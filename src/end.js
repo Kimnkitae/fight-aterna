@@ -23,5 +23,9 @@ export const End = () => {
                 font:"VMVSegaGenesis",
             }),
         ])
+
+        onKeyPress(["r", "к"], () => {
+            go("sceneMenu")
+        })
     })
 }

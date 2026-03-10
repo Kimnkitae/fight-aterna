@@ -19,6 +19,8 @@ import { SchoolAttack2 } from "/src/school/scene6.js"
 import { SchoolAttack3 } from "/src/school/scene7.js"
 import { SchoolAttack4 } from "/src/school/scene8.js"
 import { SchoolAttack5 } from "/src/school/scene9.js"
+import { SchoolAttack6 } from "/src/school/scene10.js"
+import { SchoolAttack7 } from "/src/school/scene11.js"
 /* GameMonster */
 import { SceneM1 } from "/src/school/GameMonster/sceneM1.js"
 import { SceneM2 } from "/src/school/GameMonster/sceneM2.js"
@@ -28,8 +30,6 @@ import { SceneM5 } from "/src/school/GameMonster/sceneM5.js"
 import { SceneM6 } from "/src/school/GameMonster/sceneM6.js"
 import { SceneM7 } from "/src/school/GameMonster/sceneM7.js"
 import { SceneMLose } from "/src/school/GameMonster/sceneMLose.js"
-/* HOUSE */
-import { House } from "/src/house/scene10.js"
 /* END */
 import { End } from "/src/end.js"
 
@@ -39,6 +39,7 @@ kaplay({
     canvas: document.querySelector("#canvas"),
 })
 
+/* ASSETS */
 loadAssets()
 
 /* Menu */
@@ -56,6 +57,8 @@ SchoolAttack2()
 SchoolAttack3()
 SchoolAttack4()
 SchoolAttack5()
+SchoolAttack6()
+SchoolAttack7()
 /* GameMonster */
 SceneM1()
 SceneM2()
@@ -65,9 +68,7 @@ SceneM5()
 SceneM6()
 SceneM7()
 SceneMLose()
-/* Home */
-House()
 /* END */
 End()
 
-go("scene1")
+go("scene11")

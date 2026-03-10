@@ -91,17 +91,25 @@ export const loadAssets = () => {
     loadSprite("school-fight", "sprites/school/school-night.png")
     loadSprite("school-classroom", "sprites/school/school-fight.png")
     loadSprite("school-fight-floor", "sprites/school/school-fight-floor.png")
-
+    loadSprite("school-koridor", "sprites/school/school-koridor.png")
+    loadSprite("schoolMeet", "sprites/school/schoolMeet.png")
+    loadSprite("schoolEnd", "sprites/school/schoolEnd.png")
+    loadSprite("stranger", "sprites/school/stranger.png", {
+        sliceX: 9,
+        sliceY: 1,
+        anims: {
+            idle: { from: 0, to: 0 },
+            walkD: { from: 1, to: 8, loop: true, speed: 10 },
+        },
+    })
+    loadSprite("schoolEndFloor", "sprites/school/schoolEndFloor.png")
 
     /* ---------------- MONSTER GAME ---------------- */
 
     loadSprite("menu", "sprites/MonsterGame/scene0/Menu.png")
-
     loadSound("theme1", "sprites/MonsterGame/Music/theme1.mp3")
     loadSound("theme2", "sprites/MonsterGame/Music/theme2.mp3")
-
     loadSprite("text-form", "sprites/MonsterGame/scene1/text/text-form.png")
-
 
     /* PLAYER (MonsterGame) */
 

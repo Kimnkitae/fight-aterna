@@ -155,6 +155,8 @@ export const Prolog = () => {
 
                         ObjectDialogText.text = texts[entTextIndex]
                     } else {
+                        hospitalSound.stop()
+                        hospitalSound2.stop()
                         go("scene2")
                     }
                 }

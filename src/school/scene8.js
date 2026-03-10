@@ -60,7 +60,7 @@ export const SchoolAttack4 = () => {
                 width: 10,
                 height: 1080
             }),
-            pos(0, 0),
+            pos(-20, 0),
             area(),
             body({ isStatic: true })
         ])

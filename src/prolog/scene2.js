@@ -135,6 +135,7 @@ export const Prolog2 = () => {
                         dialogText.text = textWithPa[TextIndex]
 
                     } else {
+                        
                         go("scene3")
                     }
                 }
