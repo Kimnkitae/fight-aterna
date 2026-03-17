@@ -19,8 +19,6 @@ import { SchoolAttack2 } from "/src/school/scene6.js"
 import { SchoolAttack3 } from "/src/school/scene7.js"
 import { SchoolAttack4 } from "/src/school/scene8.js"
 import { SchoolAttack5 } from "/src/school/scene9.js"
-import { SchoolAttack6 } from "/src/school/scene10.js"
-import { SchoolAttack7 } from "/src/school/scene11.js"
 /* GameMonster */
 import { SceneM1 } from "/src/school/GameMonster/sceneM1.js"
 import { SceneM2 } from "/src/school/GameMonster/sceneM2.js"
@@ -57,8 +55,6 @@ SchoolAttack2()
 SchoolAttack3()
 SchoolAttack4()
 SchoolAttack5()
-SchoolAttack6()
-SchoolAttack7()
 /* GameMonster */
 SceneM1()
 SceneM2()
@@ -71,4 +67,4 @@ SceneMLose()
 /* END */
 End()
 
-go("scene11")
+go("sceneMenu")

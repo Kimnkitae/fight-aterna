@@ -33,10 +33,14 @@ export const SchoolAttack5 = () => {
                     dialogText.text = textGame[TextIndex]
 
                 } else {
-                    go("scene10")
+                    go("end")
                 }
             }
             onKeyPress(["space", "enter"], nextText)
             onClick(nextText)
+
+            wait(2, () => {
+                go("end")
+            })
     })
 }
