@@ -1,21 +1,17 @@
 {
-    "name": "Fight-Aterna",
-    "type": "module",
-    "homepage": "https://kimnkitae.github.io/fight-aterna/",
-    "scripts": {
-        "build": "vite build",
-        "dev": "vite",
-        "preview": "vite preview",
-        "zip": "npm run build && mkdir -p dist && zip -r dist/game.zip dist -x \"**/.DS_Store\"",
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d dist"
-    },
-    "dependencies": {
-        "kaplay": "^4000.0.0-alpha.26"
-    },
-    "devDependencies": {
-        "@types/node": "^25.2.1",
-        "gh-pages": "^6.3.0",
-        "vite": "^7.3.1"
-    }
+	"name": "Fight-Aterna",
+	"type": "module",
+	"scripts": {
+		"build": "vite build",
+		"dev": "vite",
+		"preview": "vite preview",
+		"zip": "npm run build && mkdir -p dist && zip -r dist/game.zip dist -x \"**/.DS_Store\""
+	},
+	"dependencies": {
+		"kaplay": "^3001.0.19"
+	},
+	"devDependencies": {
+		"@types/node": "^25.2.1",
+		"vite": "^7.3.1"
+	}
 }
