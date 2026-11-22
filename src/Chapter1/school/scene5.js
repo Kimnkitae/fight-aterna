@@ -1,12 +1,13 @@
-export const SchoolAttack3 = () => {
-    scene("scene7", () => {
+export const Chapter1SchoolScene3Attack = () => {
+    scene("Chapter1SchoolScene3Attack", () => {
         const school = add([
-            sprite("school-fight"),
+            sprite("school2"),
         ])
-
         const textGame = 
             [
-                "— Что мне делать?",
+                "— Фух, наконец прошел, интересная игрушка",
+                "— Ой, уже стемнело",
+                "— Что это?",
             ]
 
             let TextIndex = 0
@@ -25,17 +26,16 @@ export const SchoolAttack3 = () => {
                 ),
                 pos(20, 1000),
             ])
-                
+               
             const nextText = () => {
                 TextIndex++
                 if(TextIndex < textGame.length) {
                     dialogText.text = textGame[TextIndex]
 
                 } else {
-                    go("scene8")
+                    go("scene6")
                 }
             }
-            
             onKeyPress(["space", "enter"], nextText)
             onClick(nextText)
     })

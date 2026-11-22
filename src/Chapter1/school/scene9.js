@@ -1,6 +1,6 @@
-export const SchoolAttack5 = () => {
+export const Chapter1SchoolScene6Trip = () => {
     
-    scene("scene9", () => {
+    scene("Chapter1SchoolScene6Trip", () => {
         const bgd = add([
             sprite("schoolMeet"),
         ])
@@ -8,6 +8,7 @@ export const SchoolAttack5 = () => {
         const textGame = 
             [
                 "— Чёрт..",
+                "Придется драться с этим монстром, иначе он меня убьет"
             ]
 
             let TextIndex = 0

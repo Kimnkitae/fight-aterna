@@ -1,5 +1,5 @@
-export const SchoolAttack2 = () => {
-    scene("scene6", () => {
+export const Chapter1SchoolScene3Hide = () => {
+    scene("Chapter1SchoolScene3Hide", () => {
         const school = add([
             sprite("school-window-monster"),
         ])

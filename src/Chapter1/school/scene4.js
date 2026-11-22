@@ -1,5 +1,5 @@
-export const SchoolGame = () => {
-    scene("scene4", () => {
+export const Chapter1SchoolScene2 = () => {
+    scene("Chapter1SchoolScene2", () => {
         const phone = add([
             sprite("Phone"),
         ])

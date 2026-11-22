@@ -1,5 +1,5 @@
-export const School = () => {
-    scene("scene3", () => {
+export const Chapter1SchoolSceneStart = () => {
+    scene("Chapter1SchoolSceneStart", () => {
         const hospitalSound = play("hospital-bgd-sound", {
             loop: true,
             volume: 0.4,

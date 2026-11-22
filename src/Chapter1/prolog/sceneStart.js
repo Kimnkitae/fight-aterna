@@ -1,7 +1,7 @@
-import { Dialog } from "../utils/dialog.js"
-import { WalkPlayer } from "../utils/walkplayer.js"
-export const Prolog = () => {
-    scene("scene1", () => {
+import { Dialog } from "../../utils/dialog.js"
+import { WalkPlayer } from "../../utils/walkplayer.js"
+export const Chapter1PrologSceneStart = () => {
+    scene("Chapter1PrologSceneStart", () => {
 
         const hospital = add([
             sprite("bgd-hospital"),

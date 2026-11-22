@@ -1,6 +1,6 @@
 import { WalkPlayer } from "../utils/walkplayer.js"
-export const SchoolAttack4 = () => {
-    scene("scene8", () => {
+export const Chapter1SchoolScene5Run = () => {
+    scene("Chapter1SchoolScene5Run", () => {
         const school = add([
             sprite("school-classroom"),
             "school"

@@ -1,6 +1,6 @@
 import { WalkPlayer } from "../utils/walkplayer.js"
-export const Prolog2 = () => {
-    scene("scene2", () => {
+export const Chapter1PrologScene2 = () => {
+    scene("Chapter1PrologScene2", () => {
 
         const hospital = add([
             sprite("bgd-hospital2"),
